@@ -1,0 +1,18 @@
+{
+  "name": "multiplication",
+  "version": "1.0.0",
+  "description": "Multiplication Programs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Multiply"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "multiply": "0.0.1",
+    "url": "^0.11.0"
+  }
+}
