@@ -25,8 +25,8 @@ router.get("/user/:id", function(req,res){
     res.json({"Message" : "Hello " + req.params.id});
 });
 
-/**app.use("*", function(req, res){
-    res.sendStatus(404);
+/**app.use("*", function(req, res, params){
+    res.status(404).send((params[0].id).toString());
 });**/
 
 app.use("/api", router);
