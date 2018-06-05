@@ -26,7 +26,7 @@ var connection = mysql.createPool({
     }
 });**/
 
-app.get('/', function(resp, req){
+app.get('/', function(req, resp){
     connection.getConnection(function(error, tempConnection){
         if(error){
             console.log('Error');
@@ -41,6 +41,7 @@ app.get('/', function(resp, req){
             console.log('SUCCESS!!!\n');
             console.log(rows);
             console.log('rows with Name...\n' + rows[1].Name);
+            resp.json(rows);
         }
     });
     }
