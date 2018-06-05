@@ -17,30 +17,28 @@ resp.end(response);
 
 //app.get('/add/:val1/:val2', function(req, resp){
 app.get('/add', function(req, resp){
-var response = "Welcome to Addition"
-
+//var response = "Welcome to Addition";
 resp.sendFile(__dirname + '/index_add.html');
-    
-resp.end(response);
+//resp.end(response);
 });
 
 app.get('/sub', function(req, resp){
 
-var response = "Welcome to Subtraction"
+var response = "Welcome to Subtraction";
 
 resp.end(response);
 });
 
 app.get('/multiply', function(req, resp){
 
-var response = "Welcome to Multiplication"
+var response = "Welcome to Multiplication";
 
 resp.end(response);
 });
 
 app.get('/division', function(req, resp){
 
-var response = "Welcome to Division"
+var response = "Welcome to Division";
 
 resp.end(response);
 });
