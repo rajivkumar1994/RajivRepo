@@ -1,20 +1,22 @@
 <html>
 <head>
 <title> Addition with User Input </title>    
-<script>
+<script language="javascript">
 function add(){
 var x, y, z;
 x = Number(document.getElementById("number1").value);
 y = Number(document.getElementById("number2").value);
 z = x + y;
+console.log(z);
 z = Number(document.getElementById("answer").value);
 }      
 </script> 
 </head>
 <body>
-<input id = "number1">
-<input id = "number2">
-<button onClick = "add()">Addition</button>
-<input id = "answer">
+<input type = "text" id = "number1" name = "number1"/>
+<input type = "text" id = "number2" name = "number2"/>
+<button type = "button" name ="Submit" onclick = "javascript:add()">Addition</button>
+<input type="text" id = "answer" name="answer"/>
 </body>
 </html>
+
