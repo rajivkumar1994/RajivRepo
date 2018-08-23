@@ -4,7 +4,7 @@ var promise = require('promise');
 console.log('Executed before promise reading');
 
 
- let readPromise = fs.readFile('./files/files', 'utf8', function(err, data){
+ let readPromise = fs.readFile('./files/sample', 'utf8', function(err, data){
       return new Promise((resolve, reject) => {
         if(err){
             console.log('Rejected');
@@ -21,20 +21,20 @@ console.log('Executed before promise reading');
     readPromise.then(function(fromResolve){
     console.log('Data is : ' + fromResolve);
 }).catch(function(fromReject){
-    console.log('Data Not Found  ' + fromReject);
+    console.log('Data Not Found : ' + fromReject);
+})
+     
+     /**readPromise.then(function(fromResolve){
+    console.log('Data is : ' + fromResolve);
+}).catch(function(fromReject){
+    console.log('Data Not Found : ' + fromReject);
 })
      
      readPromise.then(function(fromResolve){
     console.log('Data is : ' + fromResolve);
 }).catch(function(fromReject){
     console.log('Data Not Found  ' + fromReject);
-})
-     
-     readPromise.then(function(fromResolve){
-    console.log('Data is : ' + fromResolve);
-}).catch(function(fromReject){
-    console.log('Data Not Found  ' + fromReject);
-})
+})**/
      
  });
 
