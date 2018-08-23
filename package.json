@@ -4,7 +4,8 @@
   "description": "Multiplication Programs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "keywords": [
     "Multiply"
@@ -12,14 +13,21 @@
   "author": "me",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.2",
+    "mongoose": "^5.2.6",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.1",
     "multiply": "0.0.1",
     "mysql": "^2.15.0",
     "path": "^0.12.7",
     "promise": "^8.0.1",
     "stringbuilder": "0.0.11",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
