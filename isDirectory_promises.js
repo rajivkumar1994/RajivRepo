@@ -1,52 +1,60 @@
 const fs = require('fs');
-const promises = require('promise');
+const path = require('path');
 
-const path = 'C:/Users/Nodejs/Programs/multiply';
-
-const path1 = 'C:/Users/Nodejs/Programs/multiply/files/sample';
-
-const path2 = 'C:/Python27/NEWS.txt';
-
-
-fs.lstat(path, (err, stats) => {
-    if(err){
-        console.log(err);
-    }
-   else if(stats.isDirectory()){
-       console.log('Is Directory : ' + stats.isDirectory());
-       const promise = fs.readdir(path, 'utf8', (error,files) => {
-           if(error){
-               console.log(error);
-           } else {
-            return new Promise((resolve, reject) => {
-              if(error){
-                  console.log('Rejected');
-                  reject(error);
-              }
-              else{
-                  console.log('Resolved');
-                  resolve(files);
-                  files.forEach(file => {
-                   console.log(file);
-               });
-              }  
-           });  
-           }
-     promise.then((fromResolve) => {
-     console.log(fromResolve);
-    }).catch((fromReject) => {
-     console.log(fromReject);
-    });
-});
+function readDirRecursive(startDir) {
+	function readDir(dir) {
+		function getDir(readDir) {
+			return new Promise((resolve,reject) => {
+				fs.readdir(readDir,(err,file) => {
+					if (err) {
+						return reject(err);
+					}
+					resolve(file.map((item) => path.resolve(readDir,item)));
+				});
+			});
+		}
+	
+function getDirList(itemList) {
+	function getStat(itemPath) {
+		return new Promise((resolve,reject) => {
+			fs.stat(itemPath,(err,stat) => {
+				if (err) {
+							return reject();
+						}
+						// resolve with item path and if directory
+						resolve({itemPath,isDirectory: stat.isDirectory()});
+					});
+				});
+			}
+		return Promise.all(itemList.map(getStat));
+		}
+		
+function fileList(itemList) {
+	for (let {itemPath,isDirectory} of itemList) {
+				if (isDirectory) {
+					fs.readdir(itemPath, 'utf8', (error,files) => {
+						if(error){
+						console.log(error);
+					} 
+					else {
+						files.forEach(file => {
+						console.log(file);
+					});	
+				}	
+		   });
+		} 
+	}
 }
-    else if(stats.isFile()){
-       console.log('Is File : ' + stats.isFile());
-       fs.readFile(path1, 'utf8', (error,files) => {
-           if(error){
-               console.log(error);
-           }else{
-                   console.log(files);
-               }
-           });
-       }
+		  
+return getDir(dir)
+			.then(getDirList)
+			.then(fileList);
+	}
+
+	// commence reading at the top
+	return readDir(startDir);
+}
+
+readDirRecursive('.').then((itemList) => {
+	console.log(itemList);
 });
