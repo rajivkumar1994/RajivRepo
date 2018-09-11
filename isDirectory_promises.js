@@ -28,7 +28,7 @@ function getDirList(itemList) {
 			}
 		return Promise.all(itemList.map(getStat));
 		}
-		
+
 function fileList(itemList) {
 	for (let {itemPath,isDirectory} of itemList) {
 				if (isDirectory) {
@@ -51,7 +51,7 @@ return getDir(dir)
 			.then(fileList);
 	}
 
-	// commence reading at the top
+	
 	return readDir(startDir);
 }
 
