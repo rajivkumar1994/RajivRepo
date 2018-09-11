@@ -51,7 +51,7 @@ return getDir(dir)
 			.then(fileList);
 	}
 
-	
+	// commence reading at the top
 	return readDir(startDir);
 }
 
